@@ -5,8 +5,8 @@ locatoins = [('Farmgate', 'Farmgate'), ('Dhanmondi', 'Dhanmondi'), ('Moghbazar',
 
 # Create your models here.
 class Store(models.Model):
-    owner=models.OneToOneField(User, on_delete=models.CASCADE, default=None)
+    owner=models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     name=models.CharField(default="Name", max_length=100)
+    description=models.CharField(default="This is the description area...", max_length=10000)
     location=models.CharField(choices=locatoins,max_length=200)
     dp=models.ImageField(upload_to='pics/stores')
-    cp=models.ImageField(upload_to='pics/stores')

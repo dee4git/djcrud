@@ -15,7 +15,7 @@
                         <h4 class="card-title mt-2">{{ top }}</h4>
                     </header>
                     <article class="card-body">
-                        <form method="POST" action="{% url 'createStore' %}" enctype="multipart/form-data">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="form-row">
                                 {% csrf_token %}
                                 <div class="col form-group">
