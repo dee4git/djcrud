@@ -4,13 +4,13 @@ from stores.models import Store
 from .models import Product
 
 
-def create(request,shop):
+def create(request,id):
     print("Called")
     top = "Add your product"
     confirm = "Confirm"
     confirmation = "Add product?"
     cancel = "Cancel"
-    store=Store.objects.get(pk=shop)
+    store=Store.objects.get(pk=id)
     if request.method == "POST":
         form = forms.Form(request.POST, request.FILES)
         if form.is_valid():
