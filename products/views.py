@@ -2,22 +2,22 @@ from django.shortcuts import render, redirect
 from . import forms
 from stores.models import Store
 from .models import Product
-
+from stores import views as storev
 
 def create(request,id):
+    store = Store.objects.get(pk=id)
     print("Called")
-    top = "Add your product"
+    top = "Add prduct in " + store.name
     confirm = "Confirm"
     confirmation = "Add product?"
     cancel = "Cancel"
-    store=Store.objects.get(pk=id)
     if request.method == "POST":
         form = forms.Form(request.POST, request.FILES)
         if form.is_valid():
             instance = form.save(commit=False)
             instance.store = store
             instance.save()
-            return redirect("/")
+            return storev.storeView(request, store.id)
     else:
         form = forms.Form()
     return render(request, 'create.html',

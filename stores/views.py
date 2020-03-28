@@ -61,9 +61,9 @@ def storeView(request, id):
     if detail.owner == request.user:
         status = 1
 
-    return render(request, "detail.html", {"detail": detail,
+    return render(request, "detail.html", {"store": detail,
                                            "s": status,
-                                           "products":products,
+                                           "products": products,
                                            })
 
 
